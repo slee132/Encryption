@@ -1,5 +1,3 @@
- 
- 
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -24,7 +22,7 @@ import javax.swing.ScrollPaneConstants;
 public class CaesarGUI extends JFrame implements ActionListener {
  
         private static final long serialVersionUID = 1L;
-        private static String alphabet = "abcdefghijklmnopqrstuvwxyz";
+        private static String character = "a1!b2@c3#d4$e5%f6^g7&h8*i9(j0)k`l~m [0]0;n'o,p.q/r<s>t?u{v}w|x-y+z_=";
         private JTextField shiftFactor;
         private JTextArea inputTA;
         private JTextArea outputTA;
@@ -48,14 +46,14 @@ public class CaesarGUI extends JFrame implements ActionListener {
                 //If there wasn't, set shift to zero,
                 //Otherwise parse the input value to an integer so we can use it.
                 if(!textNum.equals("")){
-                        shift = Integer.parseInt(textNum)%26;
+                        shift = Integer.parseInt(textNum)%68;
                 }
                 else{
                         shift = 0;
                 }
-                //Map every letter of the alphabet to another letter in the alphabet, shifted by x places.
-                for(int i=0; i<alphabet.length(); i++){
-                        alphaMap.put(alphabet.charAt(i), alphabet.charAt((i+shift)%26));
+                //Map every letter of the character to another letter in the character, shifted by x places.
+                for(int i=0; i<character.length(); i++){
+                        alphaMap.put(character.charAt(i), character.charAt((i+shift)%68));
                 }
                 //Get input text and put it all to lower-case so it's easy to convert
                 String inputText = inputTA.getText().toLowerCase();
@@ -73,13 +71,13 @@ public class CaesarGUI extends JFrame implements ActionListener {
                 int shift;
                 String textNum = this.shiftFactor.getText();
                 if(!textNum.equals("")){
-                        shift = Integer.parseInt(textNum)%26;
+                        shift = Integer.parseInt(textNum)%68;
                 }
                 else{
                         shift = 0;
                 }
-                for(int i=0; i<alphabet.length(); i++){
-                        alphaMap.put(alphabet.charAt((i+shift)%26), alphabet.charAt(i));
+                for(int i=0; i<character.length(); i++){
+                        alphaMap.put(character.charAt((i+shift)%68), character.charAt(i));
                 }
                 String inputText = inputTA.getText().toLowerCase();
                 String outputText = "";
